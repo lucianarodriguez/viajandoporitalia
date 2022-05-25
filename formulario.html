@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+
+    <!-- para utilizar tipografia de google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Mate+SC&display=swap" rel="stylesheet">
+
+    <!-- para utilizar iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+        integrity="sha512-rqQltXRuHxtPWhktpAZxLHUVJ3Eombn3hvk9PHjV/N5DMUYnzKPC1i3ub0mEXgFzsaZNeJcoE0YHq0j/GFsdGg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/estilos.css">
+
+</head>
+
+<body>
+    <header>
+        <div class="contenedor encabezado">
+            <div><a href=""><i class="fab fa-facebook icono"></i></a></div>
+            <div><a href=""><i class="fab fa-instagram icono"></i></a></div>
+        </div>
+    </header>
+
+    <nav class="contenedor menu">
+        <a href="index.html">
+            <div class="menu_item">Inicio</div>
+        </a>
+        <a href="que_visitar.html">
+            <div class="menu_item">¿Qué visitar?</div>
+        </a>
+        <a href="gondolas.html">
+            <div class="menu_item">Góndolas</div>
+        </a>
+        <a href="mapa.html">
+            <div class="menu_item">Mapa</div>
+        </a>
+        <a href="formulario.html">
+            <div class="menu_item activo">Contacto</div>
+        </a>
+    </nav>
+
+    <main>
+        <div class="principal">
+            <div class="ppal">
+                <h2>Formulario de contacto</h2>
+                <div class="formulario">
+                    <form name="fvalida" action="" method="post">
+                        <table>
+                            <tr>
+                                <td><label for="apell">Apellido: </label></td>
+                                <td><input type="text" name="apellido" maxlength="30" size="30" id="apell" required></td>
+                            </tr>
+                            <tr>
+                                <td><label for="name">Nombre: </label></td>
+                                <td><input type="text" name="nombre" maxlength="30" size="30" id="name" required></td>
+                            </tr>
+                            <tr>
+                                <td><label for="mail">E-Mail: </label></td>
+                                <td><input type="email" name="email" size="30" id="mail" placeholder="mail@mail.com" required></td>
+                            </tr>
+                            <tr>
+                                <td><label for="edad">Edad: </label></td>
+                                <td><input type="number" name="edad" min="15" max="99" id="edad" required></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><label for="msg">Mensaje: </label></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><textarea name="mensaje" id="msg" cols="30" rows="10" id="msg"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><label for="msg">Lugares de interés: </label></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input type="checkbox" name="intereses" id="plazaSM" value="San Marcos">
+                                    <label for="plazaSM">Plaza San Marcos</label>
+                                    <br>
+                                    <input type="checkbox" name="intereses" id="puenteR" value="Rialto">
+                                    <label for="puenteR">Puente Rialto</label>
+                                    <br>
+                                    <input type="checkbox" name="intereses" id="puenteS" value="Suspiros">
+                                    <label for="puenteS">Puente de los Suspiros</label>
+                                    <br>
+                                    <input type="checkbox" name="intereses" id="canal" value="Gran Canal">
+                                    <label for="canal">Gran Canal</label>
+                                    <br>
+                                    <input type="checkbox" name="intereses" id="barrios" value="Barrios Venecia">
+                                    <label for="barrios">Barrios de Venecia</label>
+                                </td>
+                            </tr>
+                            <tr style="text-align: center;">
+                                <td colspan="2">
+                                    <br>
+                                    <!-- Al presionar el botón, se llama a la función de validacion -->
+                                    <input type="button" value="Enviar formulario" onclick="valida_envia()">
+                                    <input type="reset" value="Borrar contenido">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                    <!-- Validación del Formulario con JavaScript -->
+                    <script>
+                        // Esta función valida todos los campos del form.
+                        // Si alguno no cumple con los requisitos, se aborta
+                        // con return. Caso contrario, al final se realiza 
+                        // efectivamente el envio de los datos.
+
+                        function valida_envia() {
+
+                            //Valido la edad. Tiene que ser entero mayor que 18
+                            edad = document.fvalida.edad.value
+                            edad = validarEntero(edad)
+                            document.fvalida.edad.value = edad
+                            if (edad == "") {
+                                alert("Tiene que introducir un número entero en su edad.")
+                                document.fvalida.edad.focus()
+                                return 0;
+                            } else {
+                                if (edad < 18) {
+                                    alert("Debe ser mayor de 18 años.")
+                                    document.fvalida.edad.focus()
+                                    return 0;
+                                }
+                            }
+                            
+                            //Valido el interés
+                            if (document.fvalida.intereses[0].checked == false && document.fvalida.intereses[1].checked == false && document.fvalida.intereses[2].checked == false && document.fvalida.intereses[3].checked == false && document.fvalida.intereses[4].checked == false) {
+                                alert("Debe seleccionar algún lugar de interés.");
+                                document.fvalida.intereses[0].focus();
+                                return 0;
+                            }
+                            
+                            //Finalmente, si llegó hasta aqui, se envia el form.
+                            alert("Muchas gracias por su consulta. Pronto nos comunicaremos para brindarle mayor información.");
+                            document.fvalida.submit();
+                        }
+                        
+                        function validarEntero(valor) {
+                            //intento convertir a entero.
+                            //si era un entero no le afecta, si no lo era lo intenta convertir
+                            valor = parseInt(valor);
+
+                            //Compruebo si es un valor numérico
+                            if (isNaN(valor)) {
+                                //entonces (no es numero) devuelvo el valor cadena vacia
+                                return "";
+                            } else {
+                                //En caso contrario (Si era un número) devuelvo el valor
+                                return valor;
+                            }
+                        }
+                    </script>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="pie">
+            <p>Diseñado por Luciana Rodríguez - 2022</p>
+        </div>
+    </footer>
+
+    <!-- parche para las transformaciones -->
+    <script> </script>
+</body>
+
+</html>

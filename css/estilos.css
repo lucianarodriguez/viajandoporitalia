@@ -1,0 +1,220 @@
+/* font-family: 'Mate SC', serif;
+font-family: 'Dancing Script', cursive; */
+
+body{
+    line-height: 20px; /* interlineado */
+    color: darkslategray;
+    font-family: 'Mate SC', serif;
+    font-size: 15px;
+    max-width: 960px;
+    margin: 0 auto;
+} 
+
+/*#####################################################*/
+/*  ENCABEZADO  */
+.contenedor{
+    background-color: #ccc;
+    height: 40px;
+    margin: 0 auto;    
+    display: inline-flex;   
+}
+
+.encabezado{
+    /*height: 20px;*/
+    display: flex;
+    justify-content: flex-end; /*alineación horizontal - funciona habilitando el display flex*/
+    align-items: center; /*centrado vertical - funciona habilitando el display flex*/
+}
+
+.icono{
+    margin: 5px;
+    font-size: 20px;
+    color: white;
+}
+/*  FIN ENCABEZADO  */
+/*#####################################################*/
+
+
+/*#####################################################*/
+/* NAV */
+
+.menu{
+    background-color: #ddd;
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.menu_item{
+    height: 100%;
+    width: 130px;
+    margin: 1px;
+    display: flex;
+    justify-content: center; /*centrado horizontal - funciona habilitando el display flex*/
+    align-items: center; /*centrado vertical - funciona habilitando el display flex*/
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.menu_item:hover{ /*pseudo clase - cuando paso el mouse por encima*/
+
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&1+0,0+100;White+to+Transparent */
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+
+}
+
+.activo{
+    
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&1+0,0+100;White+to+Transparent */
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+
+}
+
+.menu_item:hover::after{
+    content: '';
+	border: 10px solid transparent;
+	border-left-color: #ccc;
+    position: absolute;
+	text-align: center;
+    margin-right: 100px;
+}
+/* FIN NAV*/
+/*#####################################################*/
+
+
+/*#####################################################*/
+/* MAIN */
+
+.ppal{
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.ppal h2{
+    color:rgb(58, 58, 59);
+    font-family: 'Dancing Script', cursive; /*tipografia*/
+    font-size: 40px;
+    text-shadow: inset 1px 1px 1px black; /*sombra al título*/
+}
+
+.ppal img{
+    width: 60%;
+    border-radius: 0 20px; /*bordes redondeados de la imagen*/
+    box-shadow: 10px 10px 15px rgba(78, 78, 78, 0.774); /*sombra de la imagen*/
+    transform: scale(0.9); /*la imagen es un poco mas chica, para que al agrandar no arrastre al otro elemento*/
+    transition: all 0.3s ease; /*transicion para que el cambio sea gradual*/
+}
+
+.ppal a img{
+    cursor: pointer;
+}
+
+.ppal img:hover{
+    transform: scale(1);
+}
+
+.ppal p{
+    width: 60%;
+    margin: 10px 20%;
+}
+
+.lugar {
+    display: flex;
+	justify-content: space-between;
+    flex-wrap: wrap;
+}
+.lugares{
+    width:49%;
+	border:1px solid #ddd;
+	margin-bottom: 30px;
+}
+
+.formulario{
+    width: 35%;
+    margin: 0 auto;
+}
+.formulario form{
+    margin: 30px 0;
+    text-align: left;
+    line-height: 30px; /* interlineado */
+}
+
+/* FIN MAIN */
+/*#####################################################*/
+
+
+/*#####################################################*/
+/* FOOTER */
+.pie{
+    background-color: #ddd;
+    color: black;
+    clear: both;
+    padding: 20px;
+}
+
+.pie p{
+    text-align: center;
+    font-style: italic;
+}
+/* FIN FOOTER */
+/*#####################################################*/
+
+
+/*#####################################################*/
+/* RESPONSIVE */
+@media only screen and (max-width:768px) {
+    body{
+        font-size: 14px;
+    } 
+    .ppal h2{
+        font-size: 35px;
+    }
+    iframe{
+        width: 80%;
+    }
+    .formulario{
+        width: 50%;
+    }
+    .lugares{
+        width:90%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    body{
+        font-size: 11px;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .ppal h2{
+        font-size: 25px;
+    }
+    .menu{
+        display: block;
+    }
+    .menu_item {
+        width: 100%;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+    iframe{
+        width: 90%;
+    }
+    .formulario{
+        width: 50%;
+    }
+    .lugares{
+        width:100%;
+    }
+}
+/* FIN RESPONSIVE */
+/*#####################################################*/
